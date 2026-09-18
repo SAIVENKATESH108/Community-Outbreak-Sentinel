@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build --prefix dashboard",
+  "installCommand": "npm ci --prefix dashboard",
+  "outputDirectory": "dashboard/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
