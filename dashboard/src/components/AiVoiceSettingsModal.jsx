@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE } from '../api/client';
 
 export function AiVoiceSettingsModal({ isOpen, onClose }) {
   if (!isOpen) return null;
@@ -10,7 +11,7 @@ export function AiVoiceSettingsModal({ isOpen, onClose }) {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    fetch('/api/v1/surveillance/ai-models')
+    fetch(`${API_BASE}/surveillance/ai-models`)
       .then((r) => r.json())
       .then((data) => {
         setTelemetry(data);
@@ -23,7 +24,7 @@ export function AiVoiceSettingsModal({ isOpen, onClose }) {
     setSelectedModel(modelKey);
     setSaving(true);
     try {
-      await fetch('/api/v1/surveillance/ai-models/select', {
+      await fetch(`${API_BASE}/surveillance/ai-models/select`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ model_key: modelKey }),

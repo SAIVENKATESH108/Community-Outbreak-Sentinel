@@ -1,5 +1,6 @@
 import React from 'react';
 import { useClusters } from '../context/ClusterContext';
+import { API_BASE } from '../api/client';
 
 export function ClusterDetail() {
   const { selectedCluster, selectCluster, confirmCluster, dismissCluster, loading } = useClusters();
@@ -30,7 +31,7 @@ export function ClusterDetail() {
     if (!c?.id) return;
     let isMounted = true;
     setFetchingReports(true);
-    fetch(`/api/v1/clusters/${c.id}/reports`)
+    fetch(`${API_BASE}/clusters/${c.id}/reports`)
       .then(res => res.json())
       .then(data => {
         if (isMounted) setReports(Array.isArray(data) ? data : []);

@@ -2,7 +2,9 @@
  * API Client functions for Outbreak Cluster surveillance.
  */
 
-const API_BASE = '/api/v1/clusters';
+import { API_BASE as ROOT_API_BASE } from './client';
+
+const API_BASE = `${ROOT_API_BASE}/clusters`;
 
 export async function fetchActiveClusters() {
   const response = await fetch(`${API_BASE}/active`);

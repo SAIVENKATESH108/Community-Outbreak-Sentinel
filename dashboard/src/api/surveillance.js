@@ -7,7 +7,7 @@
  * - Transmission Modeling
  */
 
-const API_BASE = '/api/v1';
+import { API_BASE } from './client';
 
 // --- Symptom Reports CRUD ---
 export async function fetchAllReports(villageName = null, limit = 50) {

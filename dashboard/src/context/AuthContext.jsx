@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { API_BASE } from '../api/client';
 
 const AuthContext = createContext();
 
@@ -19,7 +20,7 @@ export function AuthProvider({ children }) {
   const [showAiSettingsModal, setShowAiSettingsModal] = useState(false);
 
   const loginWithOtp = async (phone, otp) => {
-    const res = await fetch('/api/v1/auth/verify-otp', {
+    const res = await fetch(`${API_BASE}/auth/verify-otp`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ phone_number: phone, otp_code: otp }),
@@ -46,7 +47,7 @@ export function AuthProvider({ children }) {
   };
 
   const loginWithOAuth = async (provider, role = 'epidemiologist') => {
-    const res = await fetch('/api/v1/auth/oauth', {
+    const res = await fetch(`${API_BASE}/auth/oauth`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ provider, role }),

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { API_BASE } from '../api/client';
 
 export function AshaFieldSurveyMode() {
   const { user, setIsAshaMode } = useAuth();
@@ -23,7 +24,7 @@ export function AshaFieldSurveyMode() {
   const loadSurveys = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/v1/surveillance/asha-surveys?village_name=${village}`);
+      const res = await fetch(`${API_BASE}/surveillance/asha-surveys?village_name=${encodeURIComponent(village)}`);
       if (res.ok) {
         const data = await res.json();
         setSurveys(data);
@@ -43,7 +44,7 @@ export function AshaFieldSurveyMode() {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const res = await fetch('/api/v1/surveillance/asha-surveys', {
+      const res = await fetch(`${API_BASE}/surveillance/asha-surveys`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
