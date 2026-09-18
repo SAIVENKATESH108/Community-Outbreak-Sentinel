@@ -12,7 +12,7 @@ from app.core.config import settings
 
 def main():
     parser = argparse.ArgumentParser(description="Manage Telegram Bot Webhook")
-    parser.add_argument("--url", type=str, help="Public HTTPS URL for the webhook (e.g. https://your-ngrok.app/api/v1/reports/voice)")
+    parser.add_argument("--url", type=str, help="Public HTTPS URL for the webhook (e.g. https://your-backend.example.com/api/v1/telegram/webhook)")
     parser.add_argument("--delete", action="store_true", help="Delete the current webhook (enables getUpdates)")
     parser.add_argument("--info", action="store_true", help="Check current webhook status")
 

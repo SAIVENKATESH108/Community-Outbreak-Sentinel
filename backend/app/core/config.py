@@ -16,8 +16,8 @@ class Settings(BaseSettings):
 
     # Telegram Bot
     TELEGRAM_BOT_TOKEN: Optional[str] = os.getenv("TELEGRAM_BOT_TOKEN", "")
-    TELEGRAM_MOCK_MODE: bool = True
-    ALERT_RECIPIENT_CHAT_IDS: str = "123456789,987654321"
+    TELEGRAM_MOCK_MODE: bool = os.getenv("TELEGRAM_MOCK_MODE", "false").lower() == "true"
+    ALERT_RECIPIENT_CHAT_IDS: str = os.getenv("ALERT_RECIPIENT_CHAT_IDS", "")
 
     # Server Configuration
     HOST: str = "0.0.0.0"

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Sentinel Surveillance Dashboard - Modern Clean Styles */
 * {
   box-sizing: border-box;
